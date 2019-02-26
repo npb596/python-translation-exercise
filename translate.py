@@ -2,9 +2,10 @@
 
 import sys
 
-def translate_sequence(rna_sequence, genetic_code):
+def translate_sequence(rna_sequence, genetic_code): 
+    return genetic_code(rna_seq)
+    print('rna_seq')
     """Translates a sequence of RNA into a sequence of amino acids.
-
     Translates `rna_sequence` into string of amino acids, according to the
     `genetic_code` given as a dict. Translation begins at the first position of
     the `rna_sequence` and continues until the first stop codon is encountered
@@ -16,6 +17,8 @@ def translate_sequence(rna_sequence, genetic_code):
     pass
 
 def get_all_translations(rna_sequence, genetic_code):
+    return (translate_sequence(rna_seq[n:n+3])
+            for n in range(0, len(rna_seq), 3))  
     """Get a list of all amino acid sequences encoded by an RNA sequence.
 
     All three reading frames of `rna_sequence` are scanned from 'left' to
@@ -33,6 +36,7 @@ def get_all_translations(rna_sequence, genetic_code):
     pass
 
 def get_reverse(sequence):
+    rna_seq[::-1]
     """Reverse orientation of `sequence`.
 
     Returns a string with `sequence` in the reverse order.
@@ -42,6 +46,14 @@ def get_reverse(sequence):
     pass
 
 def get_complement(sequence):
+    if rna_seq='A'
+        return('T')
+    elif rna_seq='T'
+        return('A')
+    elif rna_seq='G'
+        return('C')
+    else rna_seq='C'
+        return('G')     
     """Get the complement of `sequence`.
 
     Returns a string with the complementary sequence of `sequence`.

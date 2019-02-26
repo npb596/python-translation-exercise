@@ -71,6 +71,8 @@ def reverse_and_complement(sequence):
     """
 
 def get_longest_peptide(rna_sequence, genetic_code):
+    get_all_translations(rna_seq)
+    get_all_translations(reverse_and_complement(rna_seq))
     """Get the longest peptide encoded by an RNA sequence.
 
     Explore six reading frames of `rna_sequence` (three reading frames of the

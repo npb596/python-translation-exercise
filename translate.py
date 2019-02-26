@@ -43,14 +43,16 @@ def get_reverse(sequence):
     """
 
 def get_complement(sequence):
-    if rna_seq='A'
+    if 'A' in rna_seq:
         return('T')
-    elif rna_seq='T'
+    elif 'T' in rna_seq:
         return('A')
-    elif rna_seq='G'
+    elif 'G' in rna_seq:
         return('C')
-    else rna_seq='C'
-        return('G')     
+    elif 'C' in rna_seq:
+        return('G')
+    else:
+        exit     
     """Get the complement of `sequence`.
 
     Returns a string with the complementary sequence of `sequence`.
@@ -59,6 +61,7 @@ def get_complement(sequence):
     """
 
 def reverse_and_complement(sequence):
+    get_reverse(get_complement(rna_seq))
     """Get the reversed and complemented form of `sequence`.
 
     Returns a string that is the reversed and complemented sequence

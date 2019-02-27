@@ -3,8 +3,7 @@
 import sys
 
 def translate_sequence(rna_sequence, genetic_code): 
-    return genetic_code(rna_seq)
-    print('rna_seq')
+    return genetic_code[rna_sequence]
     """Translates a sequence of RNA into a sequence of amino acids.
     Translates `rna_sequence` into string of amino acids, according to the
     `genetic_code` given as a dict. Translation begins at the first position of
@@ -14,6 +13,26 @@ def translate_sequence(rna_sequence, genetic_code):
     If `rna_sequence` is less than 3 bases long, or starts with a stop codon,
     an empty string is returned.
     """
+def translate(rna_sequence):
+    translation = ''
+    for n in range(0, len(rna_sequence) - (len(rn_sequence) % 3), 3):
+        translation += translate_sequence(seq[n:n+3])
+    return translation
+
+def translate_in_frame(rna_sequence, framenum):
+    return translate(seq[framenum-1:])
+
+def print_translation_in_frame(rna_sequence, framenum, prefix):
+        print(prefix,
+          framenum,
+          ' ' * framenum,
+          translate_in_frame(rna_sequence, framenum),
+          sep='')
+
+def print_translations(rna_sequence, prefix=''):
+    print('\n ,' ' * (len(prefix) + 2), seq, sep='')
+    for framenum in range(1,4):
+        print_translation_in_frame(rna_sequence, framenum, prefix)
 
 def get_all_translations(rna_sequence, genetic_code):
     return (translate_sequence(rna_seq[n:n+3])

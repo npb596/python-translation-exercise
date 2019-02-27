@@ -15,12 +15,12 @@ def translate_sequence(rna_sequence, genetic_code):
     """
 def translate(rna_sequence):
     translation = ''
-    for n in range(0, len(rna_sequence) - (len(rn_sequence) % 3), 3):
-        translation += translate_sequence(seq[n:n+3])
+    for n in range(0, len(rna_sequence) - (len(rna_sequence) % 3), 3):
+        translation += translate_sequence(rna_sequence[n:n+3])
     return translation
 
 def translate_in_frame(rna_sequence, framenum):
-    return translate(seq[framenum-1:])
+    return translate(rna_sequence[framenum-1:])
 
 def print_translation_in_frame(rna_sequence, framenum, prefix):
         print(prefix,
@@ -30,9 +30,33 @@ def print_translation_in_frame(rna_sequence, framenum, prefix):
           sep='')
 
 def print_translations(rna_sequence, prefix=''):
-    print('\n ,' ' * (len(prefix) + 2), seq, sep='')
+    print('\n' ,' ' * (len(prefix) + 2), rna_sequence, sep='')
     for framenum in range(1,4):
         print_translation_in_frame(rna_sequence, framenum, prefix)
+
+print_translations('ATGCGT')
+
+def translate_with_open_reading_frame(rna_sequence, framenum):
+    open = False
+    translation = ""
+    seqlength = len(rna_sequence) - (framenum - 1)
+    for n in range(frame-1, seqlength - (seqlength % 3), 3):
+        codon = translate_sequence(seq[n:n+3])
+        open = (open or codon =="M") and not (codon == "---")
+        translation += codon if open else "---"
+    return translation
+
+def print_translate_with_open_reading_frame(rna_sequence, framenum, prefix):
+    print(prefix
+          framenum,
+          ' ' * framenum,
+          translate_with_open_reading_frame(rna_sequence, framenum),
+          sep='')
+        
+def print_translations_with_open_reading_frames(rna_sequence, prefix=''):
+    print('\n', ' ' * (len(prefix) + 2), rna_sequence, sep='')
+    for frame in range(1,4):
+        print_translate_with_open_reading_frame(rna_sequence, frame, prefix)
 
 def get_all_translations(rna_sequence, genetic_code):
     return (translate_sequence(rna_seq[n:n+3])

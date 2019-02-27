@@ -24,10 +24,10 @@ def translate_in_frame(rna_sequence, framenum):
 
 def print_translation_in_frame(rna_sequence, framenum, prefix):
         print(prefix,
-          framenum,
-          ' ' * framenum,
-          translate_in_frame(rna_sequence, framenum),
-          sep='')
+              framenum,
+              ' ' * framenum,
+              translate_in_frame(rna_sequence, framenum),
+              sep='')
 
 def print_translations(rna_sequence, prefix=''):
     print('\n' ,' ' * (len(prefix) + 2), rna_sequence, sep='')
@@ -41,13 +41,13 @@ def translate_with_open_reading_frame(rna_sequence, framenum):
     translation = ""
     seqlength = len(rna_sequence) - (framenum - 1)
     for n in range(frame-1, seqlength - (seqlength % 3), 3):
-        codon = translate_sequence(seq[n:n+3])
+        codon = translate_sequence(rna_sequence[n:n+3])
         open = (open or codon =="M") and not (codon == "---")
         translation += codon if open else "---"
     return translation
 
 def print_translate_with_open_reading_frame(rna_sequence, framenum, prefix):
-    print(prefix
+    print(prefix,
           framenum,
           ' ' * framenum,
           translate_with_open_reading_frame(rna_sequence, framenum),
@@ -59,8 +59,8 @@ def print_translations_with_open_reading_frames(rna_sequence, prefix=''):
         print_translate_with_open_reading_frame(rna_sequence, frame, prefix)
 
 def get_all_translations(rna_sequence, genetic_code):
-    return (translate_sequence(rna_seq[n:n+3])
-            for n in range(0, len(rna_seq), 3))  
+    return (translate_sequence(rna_sequence[n:n+3])
+            for n in range(0, len(rna_sequence), 3))  
     """Get a list of all amino acid sequences encoded by an RNA sequence.
 
     All three reading frames of `rna_sequence` are scanned from 'left' to
